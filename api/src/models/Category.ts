@@ -37,7 +37,4 @@ const categorySchema = new Schema<ICategory>(
   }
 );
 
-// Index for faster queries
-categorySchema.index({ name: 1 });
-
 export const Category = model<ICategory>('Category', categorySchema);

@@ -25,27 +25,27 @@ class Server {
       // Start the server
       const port = this.app.getPort();
       this.app.getApp().listen(port, () => {
-        console.log('🚀 Server started successfully!');
-        console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
-        console.log(`🌐 Server running on port: ${port}`);
-        console.log(`🔗 Health check: http://localhost:${port}/health`);
-        console.log(`📡 API base: http://localhost:${port}/api`);
-        console.log(`🗄️  Database: ${databaseConnection.getConnectionState()}`);
+        console.log('Server started successfully!');
+        console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+        console.log(`Server running on port: ${port}`);
+        console.log(`Health check: http://localhost:${port}/health`);
+        console.log(`API base: http://localhost:${port}/api`);
+        console.log(`Database: ${databaseConnection.getConnectionState()}`);
       });
     } catch (error) {
-      console.error('❌ Failed to start server:', error);
+      console.error('Failed to start server:', error);
       process.exit(1);
     }
   }
 
   public async stop(): Promise<void> {
     try {
-      console.log('🛑 Shutting down server...');
+      console.log('Shutting down server...');
       await databaseConnection.disconnect();
-      console.log('✅ Server shutdown completed');
+      console.log('Server shutdown completed');
       process.exit(0);
     } catch (error) {
-      console.error('❌ Error during server shutdown:', error);
+      console.error('Error during server shutdown:', error);
       process.exit(1);
     }
   }
@@ -56,9 +56,9 @@ const server = new Server();
 
 // Handle graceful shutdown
 const gracefulShutdown = (signal: string): void => {
-  console.log(`\n📡 Received ${signal}, initiating graceful shutdown...`);
+  console.log(`Received ${signal}, initiating graceful shutdown...`);
   server.stop().catch(error => {
-    console.error('❌ Error during graceful shutdown:', error);
+    console.error('Error during graceful shutdown:', error);
     process.exit(1);
   });
 };
@@ -69,18 +69,18 @@ process.on('SIGINT', () => gracefulShutdown('SIGINT'));
 
 // Handle uncaught exceptions
 process.on('uncaughtException', (error: Error) => {
-  console.error('💥 Uncaught Exception:', error);
+  console.error('Uncaught Exception:', error);
   server.stop().catch(() => process.exit(1));
 });
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (reason: any) => {
-  console.error('💥 Unhandled Rejection:', reason);
+  console.error('Unhandled Rejection:', reason);
   server.stop().catch(() => process.exit(1));
 });
 
 // Start the server
 server.start().catch(error => {
-  console.error('💥 Failed to start application:', error);
+  console.error('Failed to start application:', error);
   process.exit(1);
 });

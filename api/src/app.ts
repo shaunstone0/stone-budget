@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import 'express-async-errors';
 import { ApiResponse } from './types';
+import authRoutes from './routes/auth';
 
 interface AppConfig {
   port: number;
@@ -126,20 +127,28 @@ export class App {
     });
 
     // API base route
-    this.app.get('/api', (_req: Request, res: Response) => {
+    this.app.get('/api/v1', (_req: Request, res: Response) => {
       const apiInfo: ApiResponse = {
         success: true,
         message: 'Family Expense Tracker API',
         data: {
           version: '1.0.0',
-          endpoints: ['/api/auth', '/api/bills', '/api/categories', '/api/banks', '/api/balances'],
+          endpoints: [
+            '/api/v1/auth',
+            '/api/v1/bills',
+            '/api/v1/categories',
+            '/api/v1/banks',
+            '/api/v1/balances',
+          ],
         },
       };
       res.status(200).json(apiInfo);
     });
 
-    // TODO: Add route handlers here
-    // this.app.use('/api/auth', authRoutes);
+    // Import and register routes
+    this.app.use('/api/v1/auth', authRoutes);
+
+    // TODO: Add other route handlers here
     // this.app.use('/api/bills', billRoutes);
     // this.app.use('/api/categories', categoryRoutes);
     // this.app.use('/api/banks', bankRoutes);
