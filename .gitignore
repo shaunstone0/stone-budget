@@ -1,0 +1,88 @@
+# Node.js dependencies
+api/node_modules/
+api/npm-debug.log*
+api/yarn-debug.log*
+api/yarn-error.log*
+
+# Build outputs
+api/dist/
+api/build/
+
+# Environment files
+api/.env
+api/.env.local
+api/.env.development
+api/.env.test
+api/.env.production
+
+# TypeScript cache
+api/*.tsbuildinfo
+
+# IDE files
+api/.vscode/
+api/.idea/
+api/*.swp
+api/*.swo
+
+# OS generated files
+api/.DS_Store
+api/.DS_Store?
+api/._*
+api/.Spotlight-V100
+api/.Trashes
+api/ehthumbs.db
+api/Thumbs.db
+
+# Logs
+api/logs/
+api/*.log
+
+# Runtime data
+api/pids/
+api/*.pid
+api/*.seed
+api/*.pid.lock
+
+# Coverage directory used by tools like istanbul
+api/coverage/
+api/.nyc_output/
+
+# ESLint cache
+api/.eslintcache
+
+# Optional REPL history
+api/.node_repl_history
+
+# Output of 'npm pack'
+api/*.tgz
+
+# Yarn Integrity file
+api/.yarn-integrity
+
+# dotenv environment variables file
+api/.env.npm
+
+# parcel-bundler cache
+api/.cache
+api/.parcel-cache
+
+# next.js build output
+api/.next
+
+# nuxt.js build output
+api/.nuxt
+
+# vuepress build output
+api/.vuepress/dist
+
+# Serverless directories
+api/.serverless
+
+# FuseBox cache
+api/.fusebox/
+
+# DynamoDB Local files
+api/.dynamodb/
+
+# TernJS port file
+api/.tern-port
