@@ -20,7 +20,7 @@ const monthlyBalanceSchema = new Schema<IMonthlyBalance>(
       validate: {
         validator: function (value: Date) {
           // Ensure it's the first day of the month
-          return value instanceof Date && value.getDate() === 1;
+          return value.getDate() === 1;
         },
         message: 'Month must be the first day of the month (e.g., 2024-03-01)',
       },
