@@ -1,0 +1,268 @@
+// src/app/auth/login/login.component.scss
+
+// Basic color palette
+$primary-color: #3b82f6;      // Blue
+$primary-hover: #2563eb;      // Darker blue
+$error-color: #ef4444;        // Red
+$success-color: #10b981;      // Green
+$text-primary: #1f2937;       // Dark gray
+$text-secondary: #6b7280;     // Medium gray
+$border-color: #d1d5db;       // Light gray
+$background: #f9fafb;         // Very light gray
+$white: #ffffff;
+
+// Mobile-first container
+.login-container {
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: $background;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: $white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+
+  // Tablet and up
+  @media (min-width: 768px) {
+    padding: 2rem;
+    max-width: 420px;
+  }
+}
+
+// Header styles
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 0 0 0.5rem 0;
+
+    @media (min-width: 768px) {
+      font-size: 1.875rem;
+    }
+  }
+
+  p {
+    color: $text-secondary;
+    margin: 0;
+    font-size: 0.875rem;
+  }
+}
+
+// Form styles
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+// Label styles
+label {
+  font-weight: 500;
+  color: $text-primary;
+  font-size: 0.875rem;
+}
+
+// Input styles
+input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid $border-color;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: $white;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+
+  // Focus state
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+  }
+
+  // Error state
+  &.error {
+    border-color: $error-color;
+  }
+
+  // Placeholder
+  &::placeholder {
+    color: $text-secondary;
+  }
+
+  // Mobile optimization
+  @media (max-width: 767px) {
+    font-size: 16px; // Prevents zoom on iOS
+    padding: 0.875rem 0.75rem; // Slightly larger touch target
+  }
+}
+
+// Password container
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  input {
+    padding-right: 3rem; // Space for toggle button
+  }
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: $text-secondary;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+
+  // Mobile touch optimization
+  @media (max-width: 767px) {
+    padding: 0.5rem;
+    min-height: 44px; // iOS minimum touch target
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Error message styles
+.error-message {
+  color: $error-color;
+  font-size: 0.875rem;
+  margin: 0;
+  font-weight: 400;
+}
+
+// Button styles
+.submit-button {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background-color: $primary-color;
+  color: $white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &:hover:not(:disabled) {
+    background-color: $primary-hover;
+  }
+
+  &:focus {
+    outline: 2px solid $primary-color;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    background-color: $text-secondary;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // Mobile optimization
+  @media (max-width: 767px) {
+    padding: 1rem;
+    min-height: 48px; // Better touch target
+  }
+}
+
+.clear-button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+  color: $text-secondary;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: $background;
+    color: $text-primary;
+  }
+
+  &:focus {
+    outline: 2px solid $primary-color;
+    outline-offset: 2px;
+  }
+}
+
+// Footer styles
+.login-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+
+  p {
+    color: $text-secondary;
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      outline: 2px solid $primary-color;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 480px) {
+  .login-container {
+    padding: 0.5rem;
+  }
+
+  .login-card {
+    padding: 1rem;
+  }
+
+  .login-header {
+    margin-bottom: 1.5rem;
+  }
+}
+
+// Focus visible for better accessibility
+*:focus-visible {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}

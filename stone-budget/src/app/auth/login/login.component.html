@@ -1,0 +1,95 @@
+<!-- src/app/auth/login/login.component.html -->
+<div class="login-container">
+  <div class="login-card">
+    <!-- Header -->
+    <div class="login-header">
+      <h1>Login</h1>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" (keydown)="onKeyDown($event)">
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          autocomplete="email"
+          [class.error]="isFieldInvalid('email')"
+        />
+        @if (isFieldInvalid('email')) {
+          <div class="error-message">
+            {{ getFieldErrorMessage('email') }}
+          </div>
+        }
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-container">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            [class.error]="isFieldInvalid('password')"
+          />
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePassword()"
+            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+          >
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+        @if (isFieldInvalid('password')) {
+          <div class="error-message">
+            {{ getFieldErrorMessage('password') }}
+          </div>
+        }
+      </div>
+
+      <!-- General Error Message -->
+      @if (errorMessage) {
+        <div class="error-message">
+          {{ errorMessage }}
+        </div>
+      }
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-button" [disabled]="!canSubmit">
+        @if (isLoading) {
+          Loading...
+        } @else {
+          Sign In
+        }
+      </button>
+
+      <!-- Clear Button -->
+      @if (errorMessage) {
+        <button type="button" class="clear-button" (click)="clearErrors()">
+          Clear Errors
+        </button>
+      }
+    </form>
+
+    <!-- Debug Info (optional) -->
+    <!--
+    @if (false) {
+      <div class="debug-info">
+        <h4>Debug Info:</h4>
+        <p>Form Valid: {{ loginForm.valid }}</p>
+        <p>Form Touched: {{ loginForm.touched }}</p>
+        <p>Loading: {{ isLoading }}</p>
+        <p>Email Errors: {{ emailControl?.errors | json }}</p>
+        <p>Password Errors: {{ passwordControl?.errors | json }}</p>
+      </div>
+    }
+    -->
+  </div>
+</div>

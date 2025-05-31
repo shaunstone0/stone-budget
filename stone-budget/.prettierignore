@@ -1,0 +1,23 @@
+# Ignore artifacts:
+
+coverage
+
+node_modules
+
+# Ignore all generated files:
+
+*.min.css
+
+# Ignore config files
+.angular/
+.vscode/
+
+
+# Ignore package files
+package-lock.json
+
+
+
+
+
+
